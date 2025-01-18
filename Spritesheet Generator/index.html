@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Spritesheet Generator</title>
+	<link rel="stylesheet" href="./app.css" />
+	<script type="module" src="./app.js"></script>
+</head>
+<body>
+	<div class="container">
+		<h1>Spritesheet Generator</h1>
+		<p>Select multiple images to generate a spritesheet:</p>
+		<input type="file" id="fileInput" multiple accept="image/*">
+		<div class="canvas-container">
+			<canvas id="spritesheetCanvas"></canvas>
+		</div>
+		<a id="downloadLink" style="display: none;">Download Spritesheet</a>
+	</div>
+</body>
+
+</html>
