@@ -14,15 +14,26 @@ let frameIndex = 0
 let numFrames = 0
 let animationInterval = null
 
-fileInput.addEventListener("change", (event) => {
+function setCanvasResolution() {
+    let cssWidth = canvas.offsetWidth
+    let cssHeight = canvas.offsetHeight
+    let scale = window.devicePixelRatio || 1
+
+    canvas.width = cssWidth * scale
+    canvas.height = cssHeight * scale
+
+    ctx.scale(scale, scale)
+}
+
+fileInput.addEventListener("change", event => {
     let file = event.target.files[0]
     if (file) {
         let reader = new FileReader()
-        reader.onload = (e) => {
+        reader.onload = e => {
             image = new Image()
             image.onload = () => {
-                canvas.width = Math.min(frameWidth || image.width, 50 * window.innerWidth / 100)
-                canvas.height = Math.min(frameHeight || image.height, 50 * window.innerHeight / 100)
+
+                setCanvasResolution()
             }
             image.src = e.target.result
         }
@@ -32,7 +43,7 @@ fileInput.addEventListener("change", (event) => {
 
 playButton.addEventListener("click", () => {
     if (!image) {
-        alert("Please upload a spritesheet first.")
+        alert("Please upload a spritesheet first")
         return
     }
 
@@ -41,7 +52,7 @@ playButton.addEventListener("click", () => {
     fps = parseInt(fpsInput.value, 10)
 
     if (!frameWidth || !frameHeight || !fps) {
-        alert("Please enter valid frame dimensions and FPS.")
+        alert("Please enter valid frame dimensions and FPS")
         return
     }
 
@@ -54,10 +65,22 @@ playButton.addEventListener("click", () => {
 
     animationInterval = setInterval(() => {
         ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+        let canvasWidth = canvas.offsetWidth
+        let canvasHeight = canvas.offsetHeight
+        let scaleX = canvasWidth / frameWidth
+        let scaleY = canvasHeight / frameHeight
+        let scale = Math.min(scaleX, scaleY)
+
+        let scaledWidth = frameWidth * scale
+        let scaledHeight = frameHeight * scale
+        let offsetX = (canvasWidth - scaledWidth) / 2
+        let offsetY = (canvasHeight - scaledHeight) / 2
+
         ctx.drawImage(
             image,
             frameIndex * frameWidth, 0, frameWidth, frameHeight,
-            0, 0, frameWidth, frameHeight
+            offsetX, offsetY, scaledWidth, scaledHeight
         )
 
         frameIndex = (frameIndex + 1) % numFrames

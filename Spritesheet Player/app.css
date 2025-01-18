@@ -28,7 +28,7 @@ body {
 }
 
 .options {
-  width: 90%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -74,16 +74,10 @@ button:hover {
   background-color: #5b6eae;
 }
 
-.canvas-container {
-  width: 55%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 canvas {
   border: 0.3vmin solid #7289da;
   background-color: #2c2f33;
   width: 30vmin;
   height: 30vmin;
+  display: block;
 }
