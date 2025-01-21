@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Mini-Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #121212;
+            color: #e0e0e0;
+            line-height: 1.8;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #ffffff;
+        }
+
+        a {
+            color: #2196f3;
+            text-decoration: none;
+        }
+
+        pre {
+            background: #1e1e1e;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+
+        .keyword {
+            color: #c792ea;
+        }
+
+        .string {
+            color: #c3e88d;
+        }
+
+        .number {
+            color: #f78c6c;
+        }
+
+        .comment {
+            color: #676e95;
+            font-style: italic;
+        }
+
+        .function {
+            color: #82aaff;
+        }
+
+        .important {
+            color: #ffcb6b;
+        }
+
+        .example-box {
+            border: 1px solid #333;
+            background: #1e1e1e;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Comprehensive Guide</h1>
+    <p>Welcome to the ultimate guide to JavaScript! In this guide, we will cover all major JavaScript topics in
+        extensive detail with code examples, so you can master the language step by step.</p>
+
+    <h2>1. Variables and Data Types</h2>
+    <h3>What are Variables?</h3>
+    <p>Variables store data that your program can use and manipulate. They are declared using <code
+            class="keyword">var</code>, <code class="keyword">let</code>, or <code class="keyword">const</code>. Here’s
+        a breakdown:</p>
+    <ul>
+        <li><code class="keyword">var</code>: Function-scoped. Avoid using it in modern JavaScript.</li>
+        <li><code class="keyword">let</code>: Block-scoped, introduced in ES6, and allows reassignment.</li>
+        <li><code class="keyword">const</code>: Block-scoped, introduced in ES6, and does not allow reassignment.</li>
+    </ul>
+    <pre><code class="language-js"><span class="comment">// Example 1: Variable declarations</span>
+<span class="keyword">let</span> name = <span class="string">'Alice'</span>;  <span class="comment">// A string</span>
+<span class="keyword">const</span> age = <span class="number">25</span>;     <span class="comment">// A number</span>
+<span class="keyword">var</span> isStudent = <span class="keyword">true</span>;  <span class="comment">// A boolean</span>
+
+<span class="comment">// Example 2: Reassigning variables</span>
+<span class="keyword">let</span> mood = <span class="string">'happy'</span>;
+mood = <span class="string">'excited'</span>;  <span class="comment">// Allowed with let</span>
+
+<span class="comment">// Example 3: Constants</span>
+<span class="keyword">const</span> pi = <span class="number">3.14159</span>;
+// pi = 3.14; <span class="comment">// Error: Constants cannot be reassigned</span>
+</code></pre>
+
+    <h3>Data Types in JavaScript</h3>
+    <p>JavaScript has several data types divided into two categories:</p>
+    <ul>
+        <li><strong>Primitive Types:</strong> <code class="keyword">string</code>, <code class="keyword">number</code>,
+            <code class="keyword">boolean</code>, <code class="keyword">undefined</code>, <code
+                class="keyword">null</code>, <code class="keyword">symbol</code>, and <code
+                class="keyword">bigint</code>.</li>
+        <li><strong>Non-Primitive Types:</strong> <code class="keyword">object</code> and <code
+                class="keyword">array</code>.</li>
+    </ul>
+    <pre><code class="language-js"><span class="comment">// Example 1: Primitive types</span>
+<span class="keyword">let</span> message = <span class="string">'Hello'</span>;  <span class="comment">// String</span>
+<span class="keyword">let</span> count = <span class="number">10</span>;         <span class="comment">// Number</span>
+<span class="keyword">let</span> isAvailable = <span class="keyword">true</span>; <span class="comment">// Boolean</span>
+
+<span class="comment">// Example 2: Non-primitive types</span>
+<span class="keyword">let</span> person = { <span class="important">name</span>: <span class="string">'Alice'</span>, <span class="important">age</span>: <span class="number">25</span> };  <span class="comment">// Object</span>
+<span class="keyword">let</span> colors = [<span class="string">'red'</span>, <span class="string">'blue'</span>, <span class="string">'green'</span>];  <span class="comment">// Array</span>
+</code></pre>
+
+    <h3>Dynamic Typing</h3>
+    <p>JavaScript is dynamically typed, meaning variables can change their data type at runtime.</p>
+    <pre><code class="language-js"><span class="comment">// Example: Dynamic typing</span>
+<span class="keyword">let</span> value = <span class="string">'Hello'</span>; <span class="comment">// Initially a string</span>
+value = <span class="number">42</span>;         <span class="comment">// Now a number</span>
+value = <span class="keyword">true</span>;      <span class="comment">// Now a boolean</span>
+</code></pre>
+
+    <h2>2. Functions</h2>
+    <h3>What Are Functions?</h3>
+    <p>Functions are reusable blocks of code that perform specific tasks. They are defined using the <code
+            class="keyword">function</code> keyword or as arrow functions in ES6.</p>
+    <pre><code class="language-js"><span class="comment">// Example 1: Function declaration</span>
+<span class="keyword">function</span> <span class="function">sayHello</span>() {
+    <span class="keyword">console</span>.log(<span class="string">'Hello!'</span>);
+}
+
+<span class="comment">// Example 2: Function with parameters</span>
+<span class="keyword">function</span> <span class="function">add</span>(a, b) {
+    <span class="keyword">return</span> a + b;
+}
+
+<span class="comment">// Example 3: Arrow function</span>
+<span class="keyword">const</span> <span class="function">multiply</span> = (a, b) => a * b;
+
+// Calling the functions
+<span class="keyword">console</span>.log(<span class="function">add</span>(<span class="number">3</span>, <span class="number">5</span>)); <span class="comment">// Output: 8</span>
+<span class="keyword">console</span>.log(<span class="function">multiply</span>(<span class="number">4</span>, <span class="number">6</span>)); <span class="comment">// Output: 24</span>
+</code></pre>
+
+    <h3>Anonymous Functions</h3>
+    <p>Anonymous functions have no name and are often used in callbacks or as arguments to higher-order functions.</p>
+    <pre><code class="language-js"><span class="comment">// Example: Anonymous function as a callback</span>
+<span class="keyword">setTimeout</span>(<span class="keyword">function</span>() {
+    <span class="keyword">console</span>.log(<span class="string">'This runs after 2 seconds.'</span>);
+}, <span class="number">2000</span>);
+</code></pre>
+
+    <h3>Function Scope</h3>
+    <p>Variables declared inside a function are only accessible within that function. This is known as function scope.
+    </p>
+    <pre><code class="language-js"><span class="comment">// Example: Function scope</span>
+<span class="keyword">function</span> <span class="function">testScope</span>() {
+    <span class="keyword">let</span> message = <span class="string">'Inside function'</span>;
+    <span class="keyword">console</span>.log(message);  <span class="comment">// Accessible here</span>
+}
+// <span class="keyword">console</span>.log(message); <span class="comment">// Error: message is not defined</span>
+</code></pre>
+
+    <h2>3. Control Flow</h2>
+    <h3>Conditional Statements</h3>
+    <p>Control the flow of your program using conditional statements like <code class="keyword">if</code>, <code
+            class="keyword">else</code>, and <code class="keyword">switch</code>.</p>
+    <pre><code class="language-js"><span class="comment">// Example: if-else</span>
+<span class="keyword">let</span> age = <span class="number">20</span>;
+
+<span class="keyword">if</span> (age &gt;= <span class="number">18</span>) {
+    <span class="keyword">console</span>.log(<span class="string">'You are an adult.'</span>);
+} <span class="keyword">else</span> {
+    <span class="keyword">console</span>.log(<span class="string">'You are a minor.'</span>);
+}
+
+<span class="comment">// Example: switch</span>
+<span class="keyword">let</span> fruit = <span class="string">'apple'</span>;
+
+<span class="keyword">switch</span> (fruit) {
+    <span class="keyword">case</span> <span class="string">'apple'</span>:
+        <span class="keyword">console</span>.log(<span class="string">'You chose an apple.'</span>);
+        <span class="keyword">break</span>;
+    <span class="keyword">case</span> <span class="string">'banana'</span>:
+        <span class="keyword">console</span>.log(<span class="string">'You chose a banana.'</span>);
+        <span class="keyword">break</span>;
+    <span class="keyword">default</span>:
+        <span class="keyword">console</span>.log(<span class="string">'Unknown fruit.'</span>);
+}
+</code></pre>
+
+    <h3>Loops</h3>
+    <p>Loops repeat a block of code until a specified condition is met. Common loops include <code
+            class="keyword">for</code>, <code class="keyword">while</code>, and <code class="keyword">do-while</code>.
+    </p>
+    <pre><code class="language-js"><span class="comment">// Example: for loop</span>
+<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) {
+    <span class="keyword">console</span>.log(i);
+}
+
+<span class="comment">// Example: while loop</span>
+<span class="keyword">let</span> count = <span class="number">0</span>;
+<span class="keyword">while</span> (count &lt; <span class="number">5</span>) {
+    <span class="keyword">console</span>.log(count);
+    count++;
+}
+
+<span class="comment">// Example: do-while loop</span>
+<span class="keyword">let</span> num = <span class="number">0</span>;
+<span class="keyword">do</span> {
+    <span class="keyword">console</span>.log(num);
+    num++;
+} <span class="keyword">while</span> (num &lt; <span class="number">5</span>);
+</code></pre>
+</body>
+</html>
